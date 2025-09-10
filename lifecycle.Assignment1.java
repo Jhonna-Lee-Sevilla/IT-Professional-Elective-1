@@ -1,45 +1,56 @@
-public class ActivityLifecycleSimulation {
 
-    public void onCreate() {
-        System.out.println("onCreate: Activity Created");
+package com.example.lifecycleexample;
+
+import android.os.Bundle;
+import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "ActivityLifecycle";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Log.d(TAG, "onCreate: Activity Created");
     }
 
-    public void onStart() {
-        System.out.println("onStart: Activity Started");
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart: Activity Started");
     }
 
-    public void onResume() {
-        System.out.println("onResume: Activity Resumed");
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume: Activity Resumed (App is visible & interactive)");
     }
 
-    public void onPause() {
-        System.out.println("onPause: Activity Paused");
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause: Activity Paused (Another activity is taking focus)");
     }
 
-    public void onStop() {
-        System.out.println("onStop: Activity Stopped");
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop: Activity Stopped (Not visible)");
     }
 
-    public void onDestroy() {
-        System.out.println("onDestroy: Activity Destroyed");
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG, "onRestart: Activity Restarted");
     }
 
-    public static void main(String[] args) {
-        ActivityLifecycleSimulation activity = new ActivityLifecycleSimulation();
-
-        // Simulate opening the app
-        activity.onCreate();
-        activity.onStart();
-        activity.onResume();
-
-        // Simulate switching to another app
-        activity.onPause();
-        activity.onStop();
-
-        // Simulate closing the app
-        activity.onDestroy();
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy: Activity Destroyed");
     }
-}
-
-  
+}  
     
